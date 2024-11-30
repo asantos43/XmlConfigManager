@@ -102,7 +102,12 @@ namespace XmlConfigManager.Classes
 
             return false;
         }
-
+        
+        public void Clear()
+        {
+            xmlInstance.RemoveNodes();
+        }
+        
         public void LoadFromDic(ConcurrentDictionary<string, object> dic)
         {
             foreach (var item in dic)
