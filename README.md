@@ -4,7 +4,7 @@ Library to help manage c# application config files as XML.
 In order to preserve comments and formatting I have developed this library to easily manage
 an C# application config file as a XML document.
 
-With it we can create complex structures inside ConfigSections group in the configuration files,
+With it we can create complex structures inside ConfigSections group in the configuration file,
 also manage the appSettings section helping criating and removing keys and set values.
 
 All of this in compliance with the c# configuration file rules.
