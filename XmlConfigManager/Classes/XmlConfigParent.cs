@@ -10,6 +10,49 @@ namespace XmlConfigManager.Classes
 
         internal Dictionary<string, XmlConfigSectionItem> sections = null;
 
+        public void Clear()
+        {
+            xmlDefinition.RemoveNodes();
+            xmlInstance.RemoveNodes();
+
+            sectionGroups?.Clear();
+            sections?.Clear();
+        }
+
+        public void Clear(string childPath)
+        {
+            if (!string.IsNullOrEmpty(childPath))
+            {
+                var split = childPath.Split('/');
+
+                XmlConfigParent current = this;
+
+                for (int i = 0; i < split.Length; i++)
+                {
+                    if (i == split.Length - 1)
+                    {
+                        if (current.SectionGroups().TryGetValue(split[i], out XmlConfigSectionGroupItem sectionGroup))
+                        {
+                            sectionGroup.Clear();
+                        }
+                        else if (current.Sections().TryGetValue(split[i], out XmlConfigSectionItem section))
+                        {
+                            section.Clear();
+                        }
+                    }
+                    else
+                    {
+                        if (!current.SectionGroups().ContainsKey(split[i]))
+                        {
+                            break;
+                        }
+
+                        current = current.SectionGroups()[split[i]];
+                    }
+                }
+            }
+        }
+
         public XmlConfigSectionItem AddSection(string sectionPath)
         {
             var split = sectionPath.Split('/');
