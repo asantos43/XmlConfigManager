@@ -9,7 +9,7 @@ also manage the appSettings section helping criating and removing keys and set v
 
 All of this in compliance with the c# configuration file rules.
 
-Bellow is the some examples of usage:
+Bellow is some examples of usage:
 
   string fileName = Assembly.GetExecutingAssembly().Location;
 
